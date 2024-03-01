@@ -424,6 +424,16 @@
                     "\"info\"",
                     ""
                   ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::PauseTween"
+                  },
+                  "parameters": [
+                    "Player_Test",
+                    "Tween",
+                    "\"white\""
+                  ]
                 }
               ],
               "events": [
@@ -439,12 +449,6 @@
                         "=",
                         "1"
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Once"
-                      },
-                      "parameters": []
                     }
                   ],
                   "actions": [
@@ -462,40 +466,12 @@
                         "",
                         ""
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "Wait"
-                      },
-                      "parameters": [
-                        "3"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"combo: \" + Color_Combo",
-                        "\"info\"",
-                        ""
-                      ]
                     }
                   ],
                   "events": [
                     {
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
-                        {
-                          "type": {
-                            "inverted": true,
-                            "value": "MouseButtonPressed"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
-                          ]
-                        },
                         {
                           "type": {
                             "value": "BuiltinCommonInstructions::Once"
@@ -557,14 +533,6 @@
                         "0.1",
                         "",
                         ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Wait"
-                      },
-                      "parameters": [
-                        "3"
                       ]
                     }
                   ],
@@ -644,14 +612,6 @@
                         "",
                         ""
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "Wait"
-                      },
-                      "parameters": [
-                        "3"
-                      ]
                     }
                   ],
                   "events": [
@@ -730,14 +690,6 @@
                         "",
                         ""
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "Wait"
-                      },
-                      "parameters": [
-                        "3"
-                      ]
                     }
                   ],
                   "events": [
@@ -815,14 +767,6 @@
                         "0.1",
                         "",
                         ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Wait"
-                      },
-                      "parameters": [
-                        "3"
                       ]
                     },
                     {
