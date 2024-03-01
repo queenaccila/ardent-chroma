@@ -150,6 +150,18 @@
               "name": "Combo_Start",
               "type": "boolean",
               "value": false
+            },
+            {
+              "folded": true,
+              "name": "State",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "folded": true,
+              "name": "Combo_Added",
+              "type": "number",
+              "value": 0
             }
           ],
           "effects": [],
@@ -253,12 +265,13 @@
             },
             {
               "type": {
-                "value": "SetObjectVariableAsBoolean"
+                "value": "ModVarObjet"
               },
               "parameters": [
                 "Player_Test",
-                "Combo_Start",
-                "True"
+                "State",
+                "=",
+                "1"
               ]
             }
           ]
@@ -275,30 +288,24 @@
           "parameters": []
         },
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ObjectVariableAsBoolean"
-              },
-              "parameters": [
-                "Player_Test",
-                "Combo_Start",
-                "True"
-              ]
-            }
-          ],
-          "actions": [],
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "State = 1 (Combat)",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "VarScene"
+                    "value": "VarObjet"
                   },
                   "parameters": [
-                    "Color_Combo",
+                    "Player_Test",
+                    "State",
                     "=",
                     "1"
                   ]
@@ -307,26 +314,12 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                    "value": "Tween::RemoveTween"
                   },
                   "parameters": [
                     "Player_Test",
                     "Tween",
-                    "\"purple\"",
-                    "\"106;76;147\"",
-                    "\"linear\"",
-                    "0.05",
-                    "",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ResetObjectTimer"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "\"purple_cd\""
+                    "\"white\""
                   ]
                 }
               ],
@@ -336,45 +329,224 @@
                   "conditions": [
                     {
                       "type": {
-                        "value": "CompareObjectTimer"
+                        "value": "VarScene"
                       },
                       "parameters": [
-                        "Player_Test",
-                        "\"purple_cd\"",
-                        ">=",
-                        "2"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "MouseButtonPressed"
-                      },
-                      "parameters": [
-                        "",
-                        "Left"
+                        "Color_Combo",
+                        "=",
+                        "1"
                       ]
                     }
                   ],
                   "actions": [
                     {
                       "type": {
-                        "value": "Tween::RemoveTween"
+                        "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"purple\"",
+                        "\"106;76;147\"",
+                        "\"linear\"",
+                        "0.1",
+                        "",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "VarScene"
+                      },
+                      "parameters": [
+                        "Color_Combo",
+                        "=",
+                        "2"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
                       },
                       "parameters": [
                         "Player_Test",
                         "Tween",
                         "\"purple\""
                       ]
-                    },
+                    }
+                  ],
+                  "actions": [
                     {
                       "type": {
-                        "value": "SetObjectVariableAsBoolean"
+                        "value": "Tween::TweenBehavior::AddObjectColorTween2"
                       },
                       "parameters": [
                         "Player_Test",
-                        "Combo_Start",
-                        "False"
+                        "Tween",
+                        "\"blue\"",
+                        "\"25;130;196\"",
+                        "\"linear\"",
+                        "0.1",
+                        "",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "VarScene"
+                      },
+                      "parameters": [
+                        "Color_Combo",
+                        "=",
+                        "3"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"blue\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"green\"",
+                        "\"138;201;38\"",
+                        "\"linear\"",
+                        "0.1",
+                        "",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "VarScene"
+                      },
+                      "parameters": [
+                        "Color_Combo",
+                        "=",
+                        "4"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"green\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"yellow\"",
+                        "\"255;202;58\"",
+                        "\"linear\"",
+                        "0.1",
+                        "",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "VarScene"
+                      },
+                      "parameters": [
+                        "Color_Combo",
+                        "=",
+                        "5"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"yellow\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "Tween",
+                        "\"red\"",
+                        "\"255;89;94\"",
+                        "\"linear\"",
+                        "0.1",
+                        "",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Wait"
+                          },
+                          "parameters": [
+                            "2"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ModVarObjet"
+                          },
+                          "parameters": [
+                            "Player_Test",
+                            "State",
+                            "=",
+                            "0"
+                          ]
+                        }
                       ]
                     }
                   ]
@@ -382,6 +554,52 @@
               ]
             },
             {
+              "disabled": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "MouseButtonPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "VarScene"
+                  },
+                  "parameters": [
+                    "Color_Combo",
+                    ">",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Player_Test",
+                    "State",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -390,35 +608,25 @@
                   },
                   "parameters": [
                     "Color_Combo",
-                    "=",
-                    "2"
+                    ">",
+                    "0"
                   ]
                 },
                 {
                   "type": {
-                    "value": "Tween::HasFinished"
+                    "value": "BuiltinCommonInstructions::Once"
                   },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"purple\""
-                  ]
+                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                    "value": "ResetObjectTimer"
                   },
                   "parameters": [
                     "Player_Test",
-                    "Tween",
-                    "\"blue\"",
-                    "\"25;130;196\"",
-                    "\"linear\"",
-                    "0.5",
-                    "",
-                    ""
+                    "\"cooldown\""
                   ]
                 }
               ]
@@ -428,144 +636,77 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "VarScene"
-                  },
-                  "parameters": [
-                    "Color_Combo",
-                    "=",
-                    "3"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::HasFinished"
+                    "inverted": true,
+                    "value": "VarObjet"
                   },
                   "parameters": [
                     "Player_Test",
-                    "Tween",
-                    "\"blue\""
+                    "State",
+                    "=",
+                    "1"
                   ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"green\"",
-                    "\"138;201;38\"",
-                    "\"linear\"",
-                    "0.1",
-                    "",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "VarScene"
+                    "value": "ModVarScene"
                   },
                   "parameters": [
                     "Color_Combo",
                     "=",
-                    "4"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::HasFinished"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"green\""
+                    "0"
                   ]
                 }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"yellow\"",
-                    "\"255;202;58\"",
-                    "\"linear\"",
-                    "0.1",
-                    "",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "VarScene"
-                  },
-                  "parameters": [
-                    "Color_Combo",
-                    "=",
-                    "5"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::HasFinished"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"yellow\""
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"red\"",
-                    "\"255;89;94\"",
-                    "\"linear\"",
-                    "0.1",
-                    "",
-                    ""
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ObjectVariableAsBoolean"
-              },
-              "parameters": [
-                "Player_Test",
-                "Combo_Start",
-                "False"
               ]
             }
           ],
-          "actions": []
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "State = 0 (Idle)",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Player_Test",
+                    "State",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                  },
+                  "parameters": [
+                    "Player_Test",
+                    "Tween",
+                    "\"white\"",
+                    "\"255;255;255\"",
+                    "\"linear\"",
+                    "0.01",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
         }
       ],
       "layers": [
