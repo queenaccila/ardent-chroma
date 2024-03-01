@@ -403,7 +403,7 @@
                     "Player_Test",
                     "Combo_Count",
                     "=",
-                    "1"
+                    "5"
                   ]
                 }
               ],
@@ -455,6 +455,39 @@
                         "\"cd\""
                       ]
                     }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "MouseButtonPressed"
+                          },
+                          "parameters": [
+                            "",
+                            "Left"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Once"
+                          },
+                          "parameters": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "RemoveObjectTimer"
+                          },
+                          "parameters": [
+                            "Player_Test",
+                            "\"cd\""
+                          ]
+                        }
+                      ]
+                    }
                   ]
                 },
                 {
@@ -475,15 +508,6 @@
                   "actions": [
                     {
                       "type": {
-                        "value": "PauseObjectTimer"
-                      },
-                      "parameters": [
-                        "Player_Test",
-                        "\"cd\""
-                      ]
-                    },
-                    {
-                      "type": {
                         "value": "ModVarObjet"
                       },
                       "parameters": [
@@ -491,6 +515,15 @@
                         "Combo_Count",
                         "=",
                         "0"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "RemoveObjectTimer"
+                      },
+                      "parameters": [
+                        "Player_Test",
+                        "\"cd\""
                       ]
                     }
                   ]
