@@ -558,7 +558,7 @@
                     "Enemy_Test",
                     "AttackedCount",
                     ">=",
-                    "6"
+                    "5"
                   ]
                 },
                 {
@@ -658,6 +658,11 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ],
           "parameters": []
