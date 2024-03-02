@@ -170,7 +170,7 @@
                 {
                   "folded": true,
                   "type": "string",
-                  "value": "255;255;255"
+                  "value": "254;254;254"
                 },
                 {
                   "folded": true,
@@ -415,7 +415,7 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "name": "Color Combo",
+          "name": "Color Combo - Basic Enemy",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
           "events": [
@@ -439,7 +439,7 @@
                     "Enemy_Test",
                     "AttackedCount",
                     "<=",
-                    "4"
+                    "5"
                   ]
                 },
                 {
@@ -500,10 +500,19 @@
                 },
                 {
                   "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "\"IsCombo\""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "DebuggerTools::ConsoleLog"
                   },
                   "parameters": [
-                    "\"atk count: \" + Enemy_Test.AttackedCount",
+                    "\"attack: \" + Enemy_Test.AttackedCount",
                     "\"info\"",
                     ""
                   ]
@@ -548,8 +557,8 @@
                   "parameters": [
                     "Enemy_Test",
                     "AttackedCount",
-                    ">",
-                    "5"
+                    ">=",
+                    "6"
                   ]
                 },
                 {
@@ -580,6 +589,72 @@
                     "IsAttacked",
                     "=",
                     "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "\"IsCombo\"",
+                    ">",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "AttackedCount",
+                    "!=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "IsAttacked",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "AttackedCount",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "Tween",
+                    "\"color_change\"",
+                    "Enemy_Test.Color_Array[0]",
+                    "\"linear\"",
+                    "0.1",
+                    "",
+                    ""
                   ]
                 }
               ]
