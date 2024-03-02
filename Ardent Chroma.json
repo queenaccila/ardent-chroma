@@ -126,7 +126,7 @@
           "depth": 10,
           "height": 677,
           "layer": "",
-          "name": "Player_Test",
+          "name": "Enemy_Test",
           "persistentUuid": "0509c22a-aa16-4982-8584-c30b2d9e6106",
           "width": 677,
           "x": 633,
@@ -141,27 +141,63 @@
         {
           "adaptCollisionMaskAutomatically": true,
           "assetStoreId": "",
-          "name": "Player_Test",
+          "name": "Enemy_Test",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [
             {
               "folded": true,
-              "name": "Combo_Start",
-              "type": "boolean",
-              "value": false
-            },
-            {
-              "folded": true,
-              "name": "State",
+              "name": "IsAttacked",
               "type": "number",
               "value": 0
             },
             {
               "folded": true,
-              "name": "Combo_Count",
+              "name": "AttackedCount",
               "type": "number",
               "value": 0
+            },
+            {
+              "folded": true,
+              "name": "ComboCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "Color_Array",
+              "type": "array",
+              "children": [
+                {
+                  "folded": true,
+                  "type": "string",
+                  "value": "255;255;255"
+                },
+                {
+                  "folded": true,
+                  "type": "string",
+                  "value": "106;76;147"
+                },
+                {
+                  "folded": true,
+                  "type": "string",
+                  "value": "25;130;196"
+                },
+                {
+                  "folded": true,
+                  "type": "string",
+                  "value": "138;201;38"
+                },
+                {
+                  "folded": true,
+                  "type": "string",
+                  "value": "255;202;58"
+                },
+                {
+                  "folded": true,
+                  "type": "string",
+                  "value": "255;89;94"
+                }
+              ]
             }
           ],
           "effects": [],
@@ -228,316 +264,17 @@
         "folderName": "__ROOT",
         "children": [
           {
-            "objectName": "Player_Test"
+            "objectName": "Enemy_Test"
           }
         ]
       },
       "events": [
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "DepartScene"
-              },
-              "parameters": [
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "ModVarObjet"
-              },
-              "parameters": [
-                "Player_Test",
-                "State",
-                "=",
-                "0"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "MouseButtonPressed"
-              },
-              "parameters": [
-                "",
-                "Left"
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "ModVarObjet"
-              },
-              "parameters": [
-                "Player_Test",
-                "State",
-                "=",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ModVarObjet"
-              },
-              "parameters": [
-                "Player_Test",
-                "Combo_Count",
-                "+",
-                "1"
-              ]
-            }
-          ]
-        },
-        {
-          "colorB": 228,
-          "colorG": 176,
-          "colorR": 74,
-          "creationTime": 0,
-          "name": "State = 0 (Idle)",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "VarObjet"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "State",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "ModVarObjet"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Combo_Count",
-                    "=",
-                    "0"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "VarObjet"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Combo_Count",
-                    "=",
-                    "0"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"white\"",
-                    "\"255;255;255\"",
-                    "\"linear\"",
-                    "0.1",
-                    "",
-                    ""
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "colorB": 228,
-          "colorG": 176,
-          "colorR": 74,
-          "creationTime": 0,
-          "name": "State = 1 (Combat)",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "VarObjet"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Combo_Count",
-                    "=",
-                    "5"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
-                  },
-                  "parameters": [
-                    "Player_Test",
-                    "Tween",
-                    "\"purple\"",
-                    "\"189;16;224\"",
-                    "\"linear\"",
-                    "0.1",
-                    "",
-                    ""
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "MouseButtonPressed"
-                      },
-                      "parameters": [
-                        "",
-                        "Left"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Once"
-                      },
-                      "parameters": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "ResetObjectTimer"
-                      },
-                      "parameters": [
-                        "Player_Test",
-                        "\"cd\""
-                      ]
-                    }
-                  ],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "MouseButtonPressed"
-                          },
-                          "parameters": [
-                            "",
-                            "Left"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Once"
-                          },
-                          "parameters": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "RemoveObjectTimer"
-                          },
-                          "parameters": [
-                            "Player_Test",
-                            "\"cd\""
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "CompareObjectTimer"
-                      },
-                      "parameters": [
-                        "Player_Test",
-                        "\"cd\"",
-                        ">",
-                        "2"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Once"
-                      },
-                      "parameters": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "ModVarObjet"
-                      },
-                      "parameters": [
-                        "Player_Test",
-                        "Combo_Count",
-                        "=",
-                        "0"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "RemoveObjectTimer"
-                      },
-                      "parameters": [
-                        "Player_Test",
-                        "\"cd\""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": []
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Colored Enemies"
         }
       ],
       "layers": [
@@ -618,7 +355,130 @@
       ]
     }
   ],
-  "externalEvents": [],
+  "externalEvents": [
+    {
+      "associatedLayout": "Testing",
+      "lastChangeTimeStamp": 0,
+      "name": "Player",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        }
+      ]
+    },
+    {
+      "associatedLayout": "Testing",
+      "lastChangeTimeStamp": 0,
+      "name": "Colored Enemies",
+      "events": [
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "Color Combo",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "MouseButtonPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "Left"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "AttackedCount",
+                    "<=",
+                    "5"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "IsAttacked",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "AttackedCount",
+                    "+",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "IsAttacked",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "Tween",
+                    "\"color_change\"",
+                    "Enemy_Test.Color_Array[Enemy_Test.AttackedCount]",
+                    "\"linear\"",
+                    "0.1",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "\"atk count: \" + Enemy_Test.AttackedCount",
+                    "\"info\"",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        }
+      ]
+    }
+  ],
   "eventsFunctionsExtensions": [],
   "externalLayouts": [],
   "externalSourceFiles": []
