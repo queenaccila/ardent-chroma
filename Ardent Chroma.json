@@ -374,6 +374,43 @@
       "name": "Colored Enemies",
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ModVarObjet"
+              },
+              "parameters": [
+                "Enemy_Test",
+                "IsAttacked",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "ModVarObjet"
+              },
+              "parameters": [
+                "Enemy_Test",
+                "AttackedCount",
+                "=",
+                "0"
+              ]
+            }
+          ]
+        },
+        {
           "colorB": 228,
           "colorG": 176,
           "colorR": 74,
@@ -402,7 +439,7 @@
                     "Enemy_Test",
                     "AttackedCount",
                     "<=",
-                    "5"
+                    "4"
                   ]
                 },
                 {
@@ -469,6 +506,80 @@
                     "\"atk count: \" + Enemy_Test.AttackedCount",
                     "\"info\"",
                     ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::HasFinished"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "Tween",
+                    "\"color_change\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "IsAttacked",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "VarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "AttackedCount",
+                    ">",
+                    "5"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "AttackedCount",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ModVarObjet"
+                  },
+                  "parameters": [
+                    "Enemy_Test",
+                    "IsAttacked",
+                    "=",
+                    "0"
                   ]
                 }
               ]
