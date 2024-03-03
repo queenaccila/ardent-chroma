@@ -107,7 +107,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.47893418845352503,
+        "zoomFactor": 0.6897782140104505,
         "windowMask": false
       },
       "objectsGroups": [],
@@ -506,16 +506,6 @@
                     "Enemy_Test",
                     "\"IsCombo\""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "DebuggerTools::ConsoleLog"
-                  },
-                  "parameters": [
-                    "\"attack: \" + Enemy_Test.AttackedCount",
-                    "\"info\"",
-                    ""
-                  ]
                 }
               ]
             },
@@ -557,15 +547,9 @@
                   "parameters": [
                     "Enemy_Test",
                     "AttackedCount",
-                    ">=",
+                    ">",
                     "5"
                   ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
               "actions": [
@@ -577,18 +561,22 @@
                     "Enemy_Test",
                     "AttackedCount",
                     "=",
-                    "0"
+                    "1"
                   ]
                 },
                 {
                   "type": {
-                    "value": "ModVarObjet"
+                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
                   },
                   "parameters": [
                     "Enemy_Test",
-                    "IsAttacked",
-                    "=",
-                    "0"
+                    "Tween",
+                    "\"color_change\"",
+                    "Enemy_Test.Color_Array[Enemy_Test.AttackedCount]",
+                    "\"linear\"",
+                    "0.1",
+                    "",
+                    ""
                   ]
                 }
               ]
@@ -613,20 +601,39 @@
                   },
                   "parameters": [
                     "Enemy_Test",
-                    "AttackedCount",
-                    "!=",
+                    "IsAttacked",
+                    "=",
                     "0"
                   ]
                 },
                 {
                   "type": {
-                    "value": "VarObjet"
+                    "value": "BuiltinCommonInstructions::And"
                   },
-                  "parameters": [
-                    "Enemy_Test",
-                    "IsAttacked",
-                    "=",
-                    "0"
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "Enemy_Test",
+                        "AttackedCount",
+                        "!=",
+                        "0"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "VarObjet"
+                      },
+                      "parameters": [
+                        "Enemy_Test",
+                        "AttackedCount",
+                        "<=",
+                        "5"
+                      ]
+                    }
                   ]
                 }
               ],
@@ -658,11 +665,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": []
             }
           ],
           "parameters": []
