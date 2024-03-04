@@ -15,7 +15,7 @@
     "packageName": "com.example.gamename",
     "pixelsRounding": false,
     "projectUuid": "3b237ab3-4238-4d29-a246-538bb14e6308",
-    "scaleMode": "nearest",
+    "scaleMode": "linear",
     "sizeOnStartupMode": "adaptWidth",
     "templateSlug": "",
     "useExternalSourceFiles": false,
@@ -1003,6 +1003,15 @@
         "name": "Run9",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "Mina Concept Transparent.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Mina Concept Transparent.png",
+        "smoothed": true,
+        "userAdded": true
       }
     ],
     "resourceFolders": []
@@ -1034,7 +1043,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.7619362677197608,
+        "zoomFactor": 0.4057518905943831,
         "windowMask": false
       },
       "objectsGroups": [],
